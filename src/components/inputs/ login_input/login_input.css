@@ -1,0 +1,12 @@
+
+.transparent-input-style {
+    border: none;
+    font: 400 16px "Inter";
+    background: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+}
+.input-style-67913419::placeholder {
+    color: black;
+}

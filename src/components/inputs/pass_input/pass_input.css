@@ -1,0 +1,28 @@
+.pass-input {
+    flex: 0 0 auto;
+}
+.rounded-input-container {
+    border: 2px solid black;
+    border-radius: 40px;
+    font: 400 16px "Inter";
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 52px;
+    padding-left: 28px;
+    color: black;
+}
+.transparent-input-style {
+    border: none;
+    font: 400 16px "Inter";
+    background: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+}
+.input-style-67913419::placeholder {
+    color: black;
+}

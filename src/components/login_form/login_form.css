@@ -1,0 +1,17 @@
+.login-form-container {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 16px;
+}
+.login-heading {
+    flex: 0 0 auto;
+    font: 500 20px "Inter";
+    align-self: center;
+    color: black;
+    text-decoration-line: underline;
+    white-space: pre-wrap;
+}

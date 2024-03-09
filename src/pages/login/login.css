@@ -1,0 +1,41 @@
+.task-list-container-login {
+    background: white;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+.task-container-login {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    min-width: 500px;
+}
+@media (max-width: 768px) {
+    .task-container-login {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-container-login {
+        min-width: 250px;
+    }
+}
+
+.task-image-container {
+    flex: 0 0 auto;
+    align-self: center;
+    margin-top: 230px;
+}
+.image-container {
+    box-sizing: border-box;
+    display: block;
+    width: 60px;
+    max-width: initial;
+    height: 61px;
+}

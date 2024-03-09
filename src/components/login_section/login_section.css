@@ -1,0 +1,14 @@
+.login-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+.login-heading-text-style {
+    flex: 0 0 auto;
+    font: 500 28px "Inter";
+    align-self: center;
+    color: black;
+    white-space: pre-wrap;
+}
