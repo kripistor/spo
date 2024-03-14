@@ -1,0 +1,119 @@
+.category-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-selection {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 3vh 3vh 2vh;
+    padding-left: 2.7vw;
+    gap: 1vw;
+}
+
+.category-button {
+    box-sizing: border-box;
+    width: 11.7361vw;
+    height: 5.0781vh;
+    background: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 40px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+
+}
+
+.category-button:not(.selected) {
+    opacity: 0.35;
+}
+
+.category-button.Homework {
+    width: 11.7361vw;
+    height: 5.0781vh;
+    background: #B2B4E5;
+    border: 2px solid #000000;
+    border-radius: 40px;
+}
+
+.category-button.Products {
+    width: 10.5556vw;
+    height: 5.0781vh;
+    background: #f5e18d;
+    border: 2px solid #000000;
+    border-radius: 40px;
+}
+
+.category-button.Gift {
+    width: 7.0139vw;
+    height: 5.0781vh;
+    background: #ADF5E8;
+    border: 2px solid #000000;
+    border-radius: 40px;
+}
+
+.category-button.Passwords {
+    width: 11.8056vw;
+    height: 5.0781vh;
+    background: #69e791;
+    border: 2px solid #000000;
+    border-radius: 40px;
+}
+
+.category-button.selected {
+    font-weight: bold;
+}
+
+hr {
+    width: 97%;
+    margin: 2vh 0;
+    color: #8A8A8A;
+}
+
+.notes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 97%;
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1vh;
+    font-family: "Istok Web", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.note-checkbox {
+    margin-right: 1.1vw;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.note-checkbox.important {
+    border: 2px solid red;
+}
+
+.note-checkbox.completed {
+}
+
+.add-button {
+    position: fixed;
+    right: 4.1667vw;
+    bottom: 3.125vh;
+    background: transparent;
+    border: none;
+}

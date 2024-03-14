@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 100vw;
 }
 .task-container-registration {
     box-sizing: border-box;
@@ -25,5 +25,11 @@
     .task-container-registration {
         min-width: 250px;
     }
+}
+
+.task-image-container {
+    flex: 0 0 auto;
+    align-self: center;
+    margin-top: 10vh;
 }
 

@@ -1,0 +1,109 @@
+
+li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 1.4%;
+    padding: 0.3%;
+}
+
+hr {
+    margin: 2%;
+    color: #8A8A8A;
+}
+
+.header {
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+    padding-top: 3.125%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+
+}
+
+.info h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+    letter-spacing: 0;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.info a {
+    color: black;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.category{
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+    font-family: "Inter", sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 31px;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+
+.list {
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+    height: 2%;
+    font-family: "Istok Web", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 37px;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.list-item {
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2vh;
+}
+
+.list-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.create-list-button {
+    position: absolute;
+    width: 21.6%;
+    height: 5.07%;
+    left: calc(50% - 21.6%/2);
+    top: 91.8%;
+    background: #D9D9D9;
+    border-radius: 40px;
+    border-color: transparent;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+
+}
