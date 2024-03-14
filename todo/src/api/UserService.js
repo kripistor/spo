@@ -1,8 +1,10 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 let serverPath = "";
 
 serverPath = "http://localhost:8000"
+axios.defaults.withCredentials = true;
 
 export default class UserService {
     static async register(data) {
@@ -25,18 +27,23 @@ export default class UserService {
         const response = await axios.post(`${serverPath}/api/v1/auth/jwt/login`, params, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
-            }
+            },
+            withCredentials: true
         });
-
-        console.log(response)
-        if (response.status === 200 || response.status === 204) {
-            console.log('User successfully logged in');
-            // Сохраняем токен в куки
-            document.cookie = `access_token=${response.data.access_token}; path=/`;
-        } else {
-            console.log('Failed to log in');
-        }
-
         return response;
     }
+
+    static async getUserData() {
+        if (!Cookies.get('fastapiusersauth')) {
+            return null;
+        }
+        const response = await axios.get(`${serverPath}/api/v1/users/me`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.data;
+    }
+
+
 }

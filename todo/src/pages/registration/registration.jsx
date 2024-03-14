@@ -25,7 +25,7 @@ const RegistrationPage = () => {
             if (error.response) {
                 console.log('Статус ошибки:', error.response.status);
                 if (error.response.status === 422) {
-                    setError('неправильный пароль');
+                    setError('введите корректный email и пароль');
                 }else if (error.response.status === 400) {
                     setError('пользователь с таким email уже существует');
                 }

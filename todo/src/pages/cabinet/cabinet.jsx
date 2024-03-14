@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import UserService from "../../api/UserService";
 import './cabinet.css';
 import profileicon from '../../assets/img/profile.svg';
 import homeicon from '../../assets/img/home.svg';
@@ -8,8 +9,21 @@ import profile_lockicon from '../../assets/img/profile_lock.svg';
 import Category from '../../components/Category/Category';
 import List from '../../components/List/List';
 
-
 function CabinetComponent() {
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await UserService.getUserData();
+            setUserData(data);
+        };
+        fetchData();
+    }, []);
+
+    if (!userData) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
             <div className="header">
@@ -17,8 +31,8 @@ function CabinetComponent() {
                     <img src={profileicon} alt=""/>
                 </div>
                 <div className="info">
-                    <h1>Bob Smith</h1>
-                    <a href="mailto:bob_smith@gmail.com">bob_smith@gmail.com</a>
+                    <h1>{userData.email}</h1>
+                    <a href={`mailto:${userData.email}`}>{userData.email}</a>
                 </div>
             </div>
             <hr/>

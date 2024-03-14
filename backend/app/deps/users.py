@@ -15,8 +15,12 @@ from app.core.config import settings
 from app.deps.db import CurrentAsyncSession
 from app.models.users import User as UserModel
 
-#bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
-cookie_transport = CookieTransport(cookie_name="bonds", cookie_max_age=3600)
+# bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
+cookie_transport = CookieTransport(cookie_name="fastapiusersauth", cookie_domain='localhost',
+                                   cookie_secure=False,
+                                   cookie_path='/',
+                                   cookie_httponly=False,
+                                   cookie_max_age=3600)
 
 
 def get_jwt_strategy() -> JWTStrategy:

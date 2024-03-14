@@ -17,9 +17,9 @@
 }
 .error-message{
     color: red;
-    font-size: 0.8em;
     margin-top: 0.5em;
     text-align: center;
+    font: 500 20px "Inter";
 }
 @media (max-width: 768px) {
     .task-container-registration {
