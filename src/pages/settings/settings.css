@@ -1,0 +1,43 @@
+.button-list {
+    margin-top: 3vh;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.button-list button {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
+    border-color: #8A8A8A;
+    background-color: inherit;
+    padding: 2vh 0 2vh 2vw;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: left;
+
+}
+
+.button-list button:nth-child(2) {
+    border: none;
+}
+
+.button-list button img {
+    margin-right: 1vw;
+}
+
+.button-ok {
+    position: fixed;
+    right: 4.1667vw;
+    bottom: 3.125vh;
+    background-color: inherit;
+    border: none;
+}
