@@ -17,7 +17,7 @@ function App() {
                 <Route path="/registration" element={<RegistrationPage/>}/>
                 <Route path="/cabinet" element={<CabinetComponent/>}/>
                 <Route path="/settings" element={<SettingsComponent/>}/>
-                <Route path="/category_view" element={<CategoryView/>}/>
+                <Route path="/category_view/:category" element={<CategoryView/>}/>
             </Routes>
         </BrowserRouter>
     );

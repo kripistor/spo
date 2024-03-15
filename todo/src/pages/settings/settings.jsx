@@ -34,7 +34,6 @@ function SettingsComponent() {
                 </div>
             </div>
             <div className="button-list">
-                <button onClick={handleEditProfile}><img src={editIcon} alt=""/> Редактировать профиль</button>
                 <button onClick={handleLogout}><img src={logoutIcon} alt=""/> Выйти из профиля</button>
                 <button onClick={handleDeleteProfile}><img src={deleteIcon} alt=""/> Удалить профиль</button>
             </div>

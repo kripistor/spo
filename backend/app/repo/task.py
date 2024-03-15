@@ -19,6 +19,15 @@ class TaskRepo(SQLAlchemyRepo):
             ).scalars().all()
         )
 
+    async def get_user_tasks_by_category(self, user_id: uuid.UUID, category: int) -> List[Task]:
+        return (
+            (
+                await self.session.execute(
+                    select(Task).filter(Task.user_id == user_id, Task.category_id == category)
+                )
+            ).scalars().all()
+        )
+
     async def get_task_by_id(self, task_id: int) -> Task:
         return (
             (
