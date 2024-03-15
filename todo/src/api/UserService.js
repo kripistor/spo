@@ -46,5 +46,15 @@ export default class UserService {
         return response.data;
     }
 
+    static async logout() {
+        try {
+            const response = await axios.post('http://localhost:8000/api/v1/auth/jwt/logout');
+            return response;
+        } catch (error) {
+            console.error('Error during logout:', error);
+            throw error;
+        }
+    }
+
 
 }
