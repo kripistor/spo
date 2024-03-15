@@ -31,7 +31,7 @@ function CabinetComponent() {
                     <img src={profileicon} alt=""/>
                 </div>
                 <div className="info">
-                    <h1>{userData.email}</h1>
+                    <h1>{userData.username}</h1>
                     <a href={`mailto:${userData.email}`}>{userData.email}</a>
                 </div>
             </div>

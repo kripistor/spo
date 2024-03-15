@@ -8,6 +8,7 @@ import UsersService from "../../api/UserService";
 const RegistrationPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -15,7 +16,8 @@ const RegistrationPage = () => {
         try {
             const response = await UsersService.register({
                 email: email,
-                password: password
+                password: password,
+                username: username
             });
             if (response.status === 201) {
                 navigate('/login');
@@ -41,6 +43,8 @@ const RegistrationPage = () => {
                     setEmail={setEmail}
                     password={password}
                     setPassword={setPassword}
+                    username={username}
+                    setUsername={setUsername}
                     handleRegister={handleRegister}
                 />
                 {error && <div className="error-message">{error}</div>}

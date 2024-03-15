@@ -13,7 +13,8 @@ export default class UserService {
             password: data.password,
             is_active: true,
             is_superuser: false,
-            is_verified: false
+            is_verified: false,
+            username: data.username
         };
         console.log(payload)
         return await axios.post(`${serverPath}/api/v1/auth/register`, payload);
