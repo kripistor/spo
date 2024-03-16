@@ -47,7 +47,7 @@ const CategoryView = () => {
     const handleCheckboxChange = async (id) => {
         const task = notes.find(note => note.id === id);
         if (task) {
-            const updatedTask = {...task, is_completed: !task.is_completed};
+            const updatedTask = {...task, is_completed: !task.is_completed, important: task.is_completed ? task.important : false};
             const response = await TaskService.updateTask(id, updatedTask);
             if (response) {
                 setNotes(notes.map(note => note.id === id ? updatedTask : note));
