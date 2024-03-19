@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "porsche_website-backend"
+name = "todo_website-backend"
 version = "0.1.0"
 description = ""
 authors = []

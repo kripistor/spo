@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import UserService from "../../api/UserService";
 import './cabinet.css';
 import profileicon from '../../assets/img/profile.svg';
@@ -15,31 +15,53 @@ function CabinetComponent() {
     const [userData, setUserData] = useState(null);
     const [tasks, setTasks] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         const fetchData = async () => {
-            const data = await UserService.getUserData();
-            setUserData(data);
-        };
-        const fetchTasks = async () => {
-            const data = await TaskService.getUserTasks();
-            if (data) {
-                setTasks(data);
+            try {
+                const data = await UserService.getUserData();
+                if (!data) {
+                    navigate('/login');
+                } else {
+                    setUserData(data);
+                }
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    navigate('/login');
+                } else {
+                    console.error(error);
+                }
             }
         };
+
+        const fetchTasks = async () => {
+            try {
+                const data = await TaskService.getUserTasks();
+                if (data) {
+                    setTasks(data);
+                }
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    navigate('/login');
+                } else {
+                    console.error(error);
+                }
+            }
+        };
+
         fetchTasks();
         fetchData();
     }, []);
+
     const handleDelete = async (taskId) => {
         console.log(taskId);
         await TaskService.deleteTask(taskId);
         setTasks(tasks.filter(task => task.id !== taskId));
     };
+
     const handleCategoryClick = (category) => {
         navigate(`/category_view/${category}`);
     };
-    if (!userData) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <>
@@ -48,8 +70,10 @@ function CabinetComponent() {
                     <img src={profileicon} alt=""/>
                 </div>
                 <div className="info">
-                    <h1>{userData.username}</h1>
-                    <a href={`mailto:${userData.email}`}>{userData.email}</a>
+                    <Link to="/settings">
+                        <h1>{userData ? userData.username : 'Loading...'}</h1>
+                    </Link>
+                    <a href={`mailto:${userData ? userData.email : ''}`}>{userData ? userData.email : 'Loading...'}</a>
                 </div>
             </div>
             <hr/>

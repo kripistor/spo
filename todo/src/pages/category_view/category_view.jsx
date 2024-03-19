@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './category_view.css';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import importantIcon from '../../assets/img/importantcb.svg';
 import emptyIcon from '../../assets/img/emptycb.svg';
 import completeIcon from '../../assets/img/completecb.svg';
@@ -10,6 +10,7 @@ import TaskService from "../../api/TaskService";
 import {jwtDecode} from 'jwt-decode';
 import Cookies from "js-cookie";
 import trashIcon from '../../assets/img/trashcan.svg';
+import UserService from "../../api/UserService";
 
 const token = Cookies.get('token');
 
@@ -30,14 +31,23 @@ const CategoryView = () => {
     const [notes, setNotes] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [newTaskText, setNewTaskText] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchTasks = async () => {
-            const categoryId = categories.indexOf(selectedCategory) + 1;
-            const tasks = await TaskService.getTasksByCategory(categoryId);
-            setNotes(tasks);
+        const fetchData = async () => {
+            const data = await UserService.getUserData();
+            if (!data) {
+                navigate('/login');
+            } else {
+                const fetchTasks = async () => {
+                    const categoryId = categories.indexOf(selectedCategory) + 1;
+                    const tasks = await TaskService.getTasksByCategory(categoryId);
+                    setNotes(tasks);
+                };
+                fetchTasks();
+            }
         };
-        fetchTasks();
+        fetchData();
     }, [selectedCategory]);
 
     const handleCategoryChange = (category) => {
@@ -47,7 +57,11 @@ const CategoryView = () => {
     const handleCheckboxChange = async (id) => {
         const task = notes.find(note => note.id === id);
         if (task) {
-            const updatedTask = {...task, is_completed: !task.is_completed, important: task.is_completed ? task.important : false};
+            const updatedTask = {
+                ...task,
+                is_completed: !task.is_completed,
+                important: task.is_completed ? task.important : false
+            };
             const response = await TaskService.updateTask(id, updatedTask);
             if (response) {
                 setNotes(notes.map(note => note.id === id ? updatedTask : note));

@@ -3,9 +3,13 @@ import Cookies from 'js-cookie';
 
 let serverPath = "";
 
-serverPath = "http://localhost:8000"
+serverPath = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
+const token = Cookies.get('token');
+if (token) {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+}
 export default class UserService {
     static async register(data) {
         const payload = {
@@ -26,35 +30,25 @@ export default class UserService {
         params.append('password', data.password);
 
         const response = await axios.post(`${serverPath}/api/v1/auth/jwt/login`, params, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
             withCredentials: true
         });
+        if (response.status === 200) {
+            Cookies.set('token', response.data.access_token);
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token');
+        }
         return response;
     }
 
     static async getUserData() {
-        if (!Cookies.get('fastapiusersauth')) {
+        if (!Cookies.get('token')) {
             return null;
         }
-        const response = await axios.get(`${serverPath}/api/v1/users/me`, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        const response = await axios.get(`${serverPath}/api/v1/users/me`);
         return response.data;
     }
 
-    static async logout() {
-        try {
-            const response = await axios.post('http://localhost:8000/api/v1/auth/jwt/logout');
-            return response;
-        } catch (error) {
-            console.error('Error during logout:', error);
-            throw error;
-        }
+    static logout() {
+        Cookies.remove('token');
+        delete axios.defaults.headers.common['Authorization'];
     }
-
-
 }

@@ -7,11 +7,12 @@ import okikon from '../../assets/img/mark.svg';
 import React, {useEffect, useState} from "react";
 import UserService from "../../api/UserService";
 import TaskService from "../../api/TaskService";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-function SettingsComponent() {
+const SettingsComponent = () => {
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await UserService.getUserData();
@@ -19,26 +20,12 @@ function SettingsComponent() {
         };
         fetchData();
     }, []);
-    const handleEditProfile = () => {
-        // Здесь будет код для редактирования профиля
-    };
 
     const handleLogout = async () => {
-        try {
-            await UserService.logout();
-            navigate('/login');
-        } catch (error) {
-            console.error('Error during logout:', error);
-        }
+        UserService.logout();
+        navigate('/login');
     };
 
-    const handleDeleteProfile = () => {
-        // Здесь будет код для удаления профиля
-    };
-
-    const handleOk = () => {
-        // Здесь будет код для обработки нажатия на кнопку "ОК"
-    };
     if (!userData) {
         return <div>Loading...</div>;
     }
@@ -55,12 +42,12 @@ function SettingsComponent() {
                 </div>
             </div>
             <div className="button-list">
-
                 <button onClick={handleLogout}><img src={logoutIcon} alt=""/> Выйти из профиля</button>
-                <button onClick={handleDeleteProfile}><img src={deleteIcon} alt=""/> Удалить профиль</button>
             </div>
-            <button className="button-ok" onClick={handleOk}>
-                <img src={okikon} alt=""/>
+            <button className="button-ok">
+                <Link to="/cabinet">
+                    <img src={okikon} alt=""/>
+                </Link>
             </button>
         </>
     );

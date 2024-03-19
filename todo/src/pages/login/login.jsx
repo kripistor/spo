@@ -9,20 +9,18 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
     const handleLogin = async () => {
         try {
             const response = await UserService.login({email, password});
-            console.log(response);
-            if (response.status === 204) {
+            if (response.status === 200) {
                 navigate('/cabinet');
-
-
             }
         } catch (error) {
             console.error(error);
-
         }
     };
+
     return (
         <div className="task-list-container-login">
             <div className="task-container-login">
